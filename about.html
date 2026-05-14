@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Solar Panels Optimization</title>
+    <link rel="stylesheet" href="/CSS files/global.css" />
+    <style>
+      
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 6rem 1rem;
+            background: linear-gradient(to bottom right, var(--primary-color), var(--secondary-color));
+            color: var(--white-color);
+            text-align: center;
+            position: relative;
+            margin-top: 4.5rem;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slide-in-text 1s forwards;
+            animation-delay: 0.3s;
+        }
+
+        @keyframes slide-in-text {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Content Section */
+        .content-section {
+            max-width: var(--max-width);
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+
+        .content-card {
+            background: var(--white-color);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fade-in-up 0.8s forwards;
+        }
+
+        @keyframes fade-in-up {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            color: #666;
+        }
+
+        .tech-list {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            list-style: none;
+            padding: 0;
+        }
+
+        .tech-list li {
+            position: relative;
+            padding-right: 1rem;
+        }
+
+        .tech-list li:not(:last-child)::after {
+            content: "•";
+            position: absolute;
+            right: 0;
+            color: var(--secondary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .content-section {
+                padding: 1rem;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .tech-list {
+                flex-direction: column;
+            }
+            
+            .tech-list li::after {
+                content: none;
+            }
+        }
+    </style>
+</head>
+<header class="header">
+    <div class="logo">SolarWinds</div>
+    <nav class="navbar">
+      <ul class="nav-menu" id="navMenu">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="dashboard.html" class="nav-link">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a href="FAQs.html" class="nav-link">FAQ</a>
+        </li>
+        <li class="nav-item">
+          <a href="support.html" class="nav-link">Support</a>
+        </li>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </nav>
+  </header>
+<body>
+    <header class="hero-section">
+        <h1 class="hero-title">Solar Panels Optimization System</h1>
+    </header>
+
+    <main class="content-section">
+        <div class="content-card" style="animation-delay: 0.4s">
+            <h2>About Our Project</h2>
+            <p>We are Team 22 from KFUPM, developing an automated solar panel optimization system that combines smart sun-tracking with eco-friendly cleaning technology. Our system uses real-time environmental data to maximize energy efficiency while minimizing water usage.</p>
+        </div>
+
+        <div class="content-card" style="animation-delay: 0.6s">
+            <h2>Our Team</h2>
+            <p>Multidisciplinary team combining expertise in Computer Science, Electrical Engineering, and Mechanical Engineering.</p>
+        </div>
+
+        <div class="content-card" style="animation-delay: 0.8s">
+            <h2>Technology</h2>
+            <ul class="tech-list">
+                <li>IoT-enabled sensors</li>
+                <li>Adaptive tilt mechanisms</li>
+                <li>Wind-powered cleaning</li>
+                <li>Cloud monitoring</li>
+            </ul>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer-content">
+          <div class="footer-links">
+            <a href="about.html">About Us</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="contact.html">Contact</a>
+          </div>
+          <div class="footer-social">
+            <a href="" aria-label="Instagram">  
+              <img src="Instagram_icon.png.png" alt="" width="24" height="24" style="vertical-align: middle;"></a>
+            <a href="#" aria-label="Twitter">
+              <img src="x.png" alt="" width="24" height="24" style="vertical-align: middle;">
+            </a>
+            <a href="#" aria-label="LinkedIn">
+              <img src="LinkedIn_logo_initials.png" alt="" width="24" height="24" style="vertical-align: middle;">
+            </a>
+          </div>
+        </div>
+        <p class="footer-copy">
+          &copy; 2025 SolarMonitor. All rights reserved.
+        </p>
+      </footer>
+      <script>    document.addEventListener('DOMContentLoaded', () => {
+        const hamburger = document.getElementById('hamburger');
+        const navMenu   = document.getElementById('navMenu');
+        hamburger.addEventListener('click', () => {
+          navMenu.classList.toggle('open');
+      })});</script>
+</body>
+</html>

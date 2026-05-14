@@ -1,0 +1,12 @@
+I0502 21:23:35.546354   14588 load.go:37] Reloading schema and connectors...
+I0502 21:23:35.562227   14588 control.go:73] [/emulator/sp 263c] UpdateResources(): done
+Schema: sources: schema\schema.gql [2088B] 
+Connector "default": sources: connector\mutations.gql [1233B] connector\queries.gql [1802B] 
+I0502 21:23:35.576613   14588 collector.go:107] schema extensions wrote into "D:\\downloads\\SP\\dataconnect\\.dataconnect\\schema"
+Generated sources: prelude.gql [71117B] 
+I0502 21:23:35.576613   14588 load.go:115] Finished reloading
+I0502 21:23:35.577105   14588 dev.go:95] Listening on address (HTTP + gRPC): 127.0.0.1:9399
+I0502 21:23:35.577105   14588 dev.go:95] Listening on address (HTTP + gRPC): [::1]:9399
+I0502 21:23:38.090992   14588 control.go:73] [/emulator/sp 0fc9] UpdateResources(): done
+Schema: sources: schema\schema.gql [2088B] 
+Connector "default": sources: connector\mutations.gql [1233B] connector\queries.gql [1802B] 

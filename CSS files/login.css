@@ -1,0 +1,119 @@
+/*******************************************************
+  LOGIN PAGE-SPECIFIC STYLES
+*******************************************************/
+
+/* Offset the main container if header is fixed */
+.login-main {
+    margin-top: 5rem;
+  }
+  
+  .auth-section {
+    background-color: var(--white-color);
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    padding: var(--spacing-lg);
+  }
+  
+  .login-title {
+    font-size: 2rem;
+    color: var(--text-color);
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .login-subtitle {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: var(--spacing-md);
+  }
+  
+  /* Form Layout */
+  .auth-form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: var(--spacing-md);
+  }
+  
+  /* Form Labels & Inputs */
+  .auth-label {
+    text-align: left;
+    margin-bottom: var(--spacing-xs);
+    font-weight: 500;
+    color: var(--text-color);
+  }
+  
+  .auth-input {
+    width: 100%;
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color var(--transition-speed) ease-in-out;
+  }
+  .auth-input:focus {
+    border-color: var(--secondary-color);
+    outline: none;
+  }
+  
+  /* Submit Button */
+  .auth-btn {
+    align-self: center;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--accent-color);
+    color: var(--white-color);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+  }
+  .auth-btn:hover {
+    background-color: var(--secondary-color);
+  }
+  
+  /* Feedback (Success/Error) */
+  .auth-feedback {
+    font-weight: 600;
+    margin-top: var(--spacing-sm);
+    min-height: 1.2rem; /* So layout doesn’t jump if empty */
+  }
+  .auth-feedback.success {
+    color: var(--secondary-color); /* or a success color */
+  }
+  .auth-feedback.error {
+    color: #e74c3c; /* or a danger color */
+  }
+  
+  /* Login links (forgot pw, register, etc.) */
+  .login-links {
+    margin-top: var(--spacing-md);
+    font-size: 0.9rem;
+  }
+  .login-links .divider {
+    color: #ccc;
+    margin: 0 var(--spacing-xs);
+  }
+  .login-links a {
+    color: var(--accent-color);
+    text-decoration: none;
+  }
+  .login-links a:hover {
+    color: var(--secondary-color);
+  }
+  
+  /*******************************************************
+    RESPONSIVE ADJUSTMENTS
+  *******************************************************/
+  @media (max-width: 480px) {
+    .login-title {
+      font-size: 1.5rem;
+    }
+    .auth-btn {
+      width: 100%;
+    }
+  }
+  

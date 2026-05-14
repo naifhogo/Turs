@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="SolarMonitor - Support Page">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SolarWinds - Support</title>
+  <link rel="stylesheet" href="/CSS files/global.css">
+  <link rel="stylesheet" href="/CSS files/support.css">
+</head>
+<body>
+  <!-- Header remains unchanged -->
+  <header class="header">
+    <div class="logo">SolarWinds</div>
+    <nav class="navbar">
+      <ul class="nav-menu" id="navMenu">
+        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+        <li class="nav-item"><a href="FAQs.html" class="nav-link">FAQ</a></li>
+        <li class="nav-item"><a href="support.html" class="nav-link active">Support</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="support-main container">
+    <h1 class="support-title">Support &amp; Troubleshooting</h1>
+
+    <!-- PDF Section unchanged -->
+    <section class="download-section">
+      <h2 class="section-subtitle">Troubleshooting Guide</h2>
+      <p class="download-info">Need a complete guide for offline reference? Download our troubleshooting PDF:</p>
+      <button class="download-btn" onclick="alert('PDF download coming soon!')">Download PDF</button>
+    </section>
+
+    <!-- Updated Support Form -->
+    <section class="support-contact-form">
+      <h2 class="section-subtitle">Contact Our Support Team</h2>
+      <form class="form-card" id="supportForm" action="https://formspree.io/f/mrbqqzeg" method="POST">
+        <!-- Name Field -->
+        <label for="userName">Name</label>
+        <input type="text" id="userName" name="name" required>
+
+        <!-- Email Field -->
+        <label for="userEmail">Email</label>
+        <input type="email" id="userEmail" name="_replyto" required>
+
+        <!-- Issue Type Dropdown -->
+        <label for="issueType">Issue Type</label>
+        <select id="issueType" name="issue_type" required>
+          <option value="" disabled selected>Select Issue Type</option>
+          <option value="technical">Technical Issue</option>
+          <option value="account">Account/Billing</option>
+          <option value="maintenance">Maintenance</option>
+          <option value="other">Other</option>
+        </select>
+
+        <!-- Message Field -->
+        <label for="userMessage">Message</label>
+        <textarea id="userMessage" name="message" rows="5" required></textarea>
+
+        <!-- Hidden Formspree Fields -->
+        <input type="hidden" name="_subject" value="New Support Request">
+        <input type="hidden" name="_next" value="/thank-you.html">
+
+        <!-- Submit Button -->
+        <button type="submit" class="submit-btn">Submit Request</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- =======================
+       FOOTER
+  ======================== -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="about.html">About Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-social">
+        <a href="" aria-label="Instagram">  
+          <img src="Instagram_icon.png.png" alt="" width="24" height="24" style="vertical-align: middle;"></a>
+        <a href="#" aria-label="Twitter">
+          <img src="x.png" alt="" width="24" height="24" style="vertical-align: middle;">
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <img src="LinkedIn_logo_initials.png" alt="" width="24" height="24" style="vertical-align: middle;">
+        </a>
+      </div>
+    </div>
+    <p class="footer-copy">
+      &copy; 2025 SolarMonitor. All rights reserved.
+    </p>
+  </footer>
+  <script>    document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.getElementById('hamburger');
+    const navMenu   = document.getElementById('navMenu');
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('open');
+  })});</script>
+  <!-- Form Submission Script -->
+
+</body>
+</html>

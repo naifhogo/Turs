@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <meta charset="UTF-8">
+  <meta name="description" content="Enhanced Solar Dashboard with Improved Graphs">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SolarWinds - Dashboard</title>
+
+  <!-- Chart.js for Data Visualizations -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Custom CSS -->
+
+  <link rel="stylesheet" href="CSS files/global.css" />
+  <link rel="stylesheet" href="CSS files/dashboard.css">
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="dash-header">
+    <div class="dash-logo">SolarWinds</div>
+    <nav class="dash-nav">
+      <nav class="navbar">
+        <ul class="nav-menu" id="navMenu">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="dashboard.html" class="nav-link">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a href="FAQs.html" class="nav-link">FAQ</a>
+          </li>
+          <li class="nav-item">
+            <a href="support.html" class="nav-link">Support</a>
+          </li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </nav>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="dash-main">
+    
+    <!-- Page Title -->
+    <section class="dash-intro">
+      <h1 class="dash-title">Solar Panel Monitoring Dashboard</h1>
+      <p class="dash-subtitle">Live data and performance tracking</p>
+    </section>
+
+    <!-- REAL-TIME METRICS (Cards) -->
+    <section class="metrics-row">
+      <section class="status-row">
+      </section>
+      <div class="metric-box">
+        <h2>battery charger percentage</h2>
+        <p class="metric-value" id="PowerOutput">-- %</p>
+    </div>
+    <div class="metric-box">
+        <h2>Wind Speed</h2>
+        <p class="metric-value" id="windSpeed">-- m/s</p>
+    </div>
+      <div class="metric-box">
+        <h2>Tilt Angle</h2>
+        <p class="metric-value" id="tiltAngle">--</p>
+      </div>
+      
+    </section>
+
+    <!-- CHARTS SECTION -->
+    <section class="charts-row">
+      <!-- Energy Trend -->
+      <div class="chart-wrapper">
+        <h2 class="chart-heading">Battery charger percentage</h2>
+        <div class="chart-container">
+          <canvas id="energyChart"></canvas>
+        </div>
+      </div>
+      <!-- Efficiency Comparison -->
+      <div class="chart-wrapper">
+        <h2 class="chart-heading">Water Consumption</h2>
+        <div class="chart-container">
+          <canvas id="efficiencyChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- Additional Charts Row -->
+    <section class="charts-row">
+      
+      <!-- Sunlight Intensity -->
+      <div class="chart-wrapper">
+        <h2 class="chart-heading">Vertical Angle</h2>
+        <div class="chart-container">
+          <canvas id="sunlightChart"></canvas>
+        </div>
+      </div>
+      <!-- Wind Speed -->
+      <div class="chart-wrapper">
+        <h2 class="chart-heading">Wind Speed Trends</h2>
+        <div class="chart-container">
+          <canvas id="windSpeedChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cleaning & Maintenance Analytics -->
+<!-- Add this in the Cleaning & Maintenance Analytics section -->
+<section class="charts-row">
+</section>
+    <!-- AI DECISION PANEL -->
+    <section class="ai-panel" id="aiPanel">
+      <div class="ai-panel-header">
+        <div class="ai-title-row">
+          <span class="ai-icon">&#9728;</span>
+          <h2 class="ai-heading">AI Decision Engine</h2>
+          <span class="ai-badge">Powered by DeepSeek-R1</span>
+        </div>
+        <button class="ai-analyze-btn" id="aiAnalyzeBtn">
+          <span class="ai-btn-icon">&#9654;</span> Analyze Now
+        </button>
+      </div>
+
+      <!-- Status bar -->
+      <div class="ai-status-bar" id="aiStatusBar">
+        <span class="ai-status-dot" id="aiStatusDot"></span>
+        <span class="ai-status-text" id="aiStatusText">Waiting for analysis...</span>
+      </div>
+
+      <!-- Recommended Action Banner -->
+      <div class="ai-action-banner" id="aiActionBanner" style="display:none;">
+        <div class="ai-action-icon" id="aiActionIcon">⚙️</div>
+        <div class="ai-action-details">
+          <div class="ai-action-label">Recommended Action</div>
+          <div class="ai-action-name" id="aiActionName">—</div>
+        </div>
+        <div class="ai-urgency-badge" id="aiUrgencyBadge">—</div>
+      </div>
+
+      <!-- Breakdown grid -->
+      <div class="ai-breakdown" id="aiBreakdown" style="display:none;">
+        <div class="ai-breakdown-card" id="aiConditions">
+          <h3 class="ai-card-title">&#127774; Conditions Assessment</h3>
+          <p class="ai-card-body" id="aiConditionsText">—</p>
+        </div>
+        <div class="ai-breakdown-card" id="aiReasoning">
+          <h3 class="ai-card-title">&#129504; Reasoning</h3>
+          <p class="ai-card-body" id="aiReasoningText">—</p>
+        </div>
+        <div class="ai-breakdown-card" id="aiSteps">
+          <h3 class="ai-card-title">&#9989; Action Steps</h3>
+          <ul class="ai-steps-list" id="aiStepsList"></ul>
+        </div>
+        <div class="ai-breakdown-card" id="aiRisks">
+          <h3 class="ai-card-title">&#9888;&#65039; Risks & Notes</h3>
+          <p class="ai-card-body" id="aiRisksText">—</p>
+        </div>
+      </div>
+
+      <!-- Loading skeleton -->
+      <div class="ai-loading" id="aiLoading" style="display:none;">
+        <div class="ai-skeleton"></div>
+        <div class="ai-skeleton short"></div>
+        <div class="ai-skeleton"></div>
+      </div>
+    </section>
+
+    <!-- SYSTEM LOGS -->
+    <section class="logs-section">
+      <h2 class="logs-heading">System Logs</h2>
+      <div class="logs-table-wrap">
+        <table class="logs-table" id="logsTable">
+          <thead>
+            <tr>
+              <th>Timestamp</th>
+              <th>Event</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Populated dynamically by JS -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- QUICK ACTIONS -->
+    <section class="actions-section">
+      <h2>Quick Actions</h2>
+      <button class="action-btn" id="resetSystemBtn">Reset System</button>
+      <button class="action-btn" id="startCleaningBtn">Test button</button>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="about.html">About Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-social">
+        <a href="" aria-label="Instagram">  
+          <img src="Instagram_icon.png.png" alt="" width="24" height="24" style="vertical-align: middle;"></a>
+        <a href="#" aria-label="Twitter">
+          <img src="x.png" alt="" width="24" height="24" style="vertical-align: middle;">
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <img src="LinkedIn_logo_initials.png" alt="" width="24" height="24" style="vertical-align: middle;">
+        </a>
+      </div>
+    </div>
+    <p class="footer-copy">
+      &copy; 2025 SolarMonitor. All rights reserved.
+    </p>
+  </footer>
+<script>    document.addEventListener('DOMContentLoaded', () => {
+  const hamburger = document.getElementById('hamburger');
+  const navMenu   = document.getElementById('navMenu');
+  hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('open');
+})});</script>
+  <!-- JavaScript for Real-Time Updates & Chart Rendering -->
+  <script src="JS files/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+/**************************************************
+  FAQs Page-Specific Styles
+**************************************************/
+
+.faq-main {
+    margin-top: 5rem; /* offset if you're using a fixed header */
+  }
+  
+  /* Page Title */
+  .faq-page-title {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--text-color);
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  /* FAQ Container */
+  .faq-container {
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  /* Individual FAQ Item */
+  .faq-item {
+    margin-bottom: var(--spacing-md);
+    border-bottom: 1px solid #ddd;
+    padding-bottom: var(--spacing-sm);
+    transition: border-color var(--transition-speed);
+  }
+  
+  /* FAQ Question Button */
+  .faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    cursor: pointer;
+    position: relative;
+    padding: var(--spacing-xs) 0;
+    transition: color var(--transition-speed), padding var(--transition-speed);
+  }
+  
+  /* Hover effect */
+  .faq-question:hover {
+    color: var(--secondary-color);
+  }
+  
+  /* FAQ Answer (collapsed by default) */
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-speed) ease, opacity var(--transition-speed) ease;
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  
+  /* When FAQ item is "open", show the answer */
+  .faq-item.open .faq-answer {
+    max-height: 500px; /* sufficiently large so entire answer fits */
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /**************************************************
+    Responsive Adjustments
+  **************************************************/
+  @media (max-width: 768px) {
+    .faq-page-title {
+      font-size: 1.75rem;
+    }
+  }
+  @media (max-width: 480px) {
+    .faq-page-title {
+      font-size: 1.5rem;
+    }
+  }
+  
